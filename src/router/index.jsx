@@ -3,6 +3,9 @@ import Test from '../pages/Test/Test'
 import Index from '../pages/Index/Index'
 import NotFound from '../pages/NotFound/NotFound'
 import Admin from '../pages/Admin/Admin'
+import Dictionary from '../pages/Dictionary/Dictionary'
+import Book from '../pages/Book/book'
+import Collect from '../pages/Collect/Collect'
 
 //react router
 import { createBrowserRouter } from 'react-router-dom'
@@ -27,6 +30,18 @@ const router = createBrowserRouter([
     {
         path: '/admin',
         element: <Admin />
+    },
+    {
+        path: '/dictionary',
+        element: <Dictionary />
+    },
+    {
+        path: '/book',
+        element: <Book />
+    },
+    {
+        path: '/collect',
+        element: <Collect />
     },
 
 ])
