@@ -1,6 +1,13 @@
+import React from 'react';
+import { Empty } from 'antd';
+
 const NotFound = () =>{
     return (
-        <div>NotFound</div>
+        <div>
+            404
+            <Empty />
+        </div>
+        
     );
 }
 

@@ -10,6 +10,7 @@ const items = [
   { key: '4', label: '集字', path: '/collect' },
   { key: '5', label: '识字' },
   { key: '6', label: '我的' },
+  { key: '7', label: '管理员', path: '/admin' },
 ];
 
 const Index = () => {

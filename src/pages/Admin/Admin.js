@@ -5,6 +5,7 @@ import {
   PieChartOutlined,
   TeamOutlined,
   UserOutlined,
+  UploadOutlined,
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
@@ -26,6 +27,7 @@ const items = [
   ]),
   getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
   getItem('Files', '9', <FileOutlined />),
+  getItem('上传碑帖', '10', <UploadOutlined />),
 ];
 const Admin = () => {
   const [collapsed, setCollapsed] = useState(false);
