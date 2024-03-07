@@ -3,11 +3,14 @@
 import React, { useState } from 'react';
 import { Card, Form, Input, Button , notification } from 'antd';
 import { UserOutlined, LockOutlined} from '@ant-design/icons';
+import { useHistory, useNavigate} from 'react-router-dom';
+
 
 
 const Login = () => {
   const [isRegistering, setIsRegistering] = useState(false); // 添加状态来控制注册和登录视图的切换
   const isMobile = window.innerWidth <= 768; // 判断设备类型
+  const navigate = useNavigate()
 
   const onFinish = async (values) => {
     console.log('Received values:', values);
@@ -68,7 +71,8 @@ const Login = () => {
             message: '登录成功',
             description: '欢迎使用CTools！',
           });
-          // 在这里可以处理登录成功的逻辑，比如跳转到其他页面等
+          // 跳转
+          navigate('/');
         } else {
           const data = await response.json();
           console.error('登录失败:', data);
