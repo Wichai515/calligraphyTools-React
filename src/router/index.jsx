@@ -1,3 +1,6 @@
+//react router
+import { createBrowserRouter } from 'react-router-dom'
+
 import Login from '../pages/Login/Login'
 import Test from '../pages/Test/Test'
 import Index from '../pages/Index/Index'
@@ -6,9 +9,10 @@ import Admin from '../pages/Admin/Admin'
 import Dictionary from '../pages/Dictionary/Dictionary'
 import Book from '../pages/Book/book'
 import Collect from '../pages/Collect/Collect'
+import Welcome from '../pages/Welcome/Welcome'
 
-//react router
-import { createBrowserRouter } from 'react-router-dom'
+
+
 
 const router = createBrowserRouter([
     {
@@ -17,7 +21,25 @@ const router = createBrowserRouter([
     },
     {
         path: '/',
-        element: <Index />
+        element: <Index />,
+        children: [
+            {
+                index: true,
+                element: <Welcome />
+            },
+            {
+                path: '/dictionary',
+                element: <Dictionary />
+            },
+            {
+                path: '/book',
+                element: <Book />
+            },
+            {
+                path: '/collect',
+                element: <Collect />
+            },
+        ]
     },
     {
         path: '/test',
@@ -30,18 +52,6 @@ const router = createBrowserRouter([
     {
         path: '/admin',
         element: <Admin />
-    },
-    {
-        path: '/dictionary',
-        element: <Dictionary />
-    },
-    {
-        path: '/book',
-        element: <Book />
-    },
-    {
-        path: '/collect',
-        element: <Collect />
     },
 
 ])
