@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import MyFooter from '../components/MyFooter/MyFooter';
+
 
 const Test = () => {
   // 假设您知道图片在文件系统中的路径
@@ -10,10 +12,10 @@ const Test = () => {
   const navigate = useNavigate()
 
   return (
-    
     <div>
       test
       <button onClick={() => navigate('/')}>jump</button>
+      <MyFooter />
     </div>
   );
 };

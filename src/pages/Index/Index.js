@@ -1,6 +1,10 @@
+//index.js
+
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import MyFooter from '../components/MyFooter/MyFooter';
+
 const { Header, Content, Footer } = Layout;
 
 const items = [
@@ -60,13 +64,7 @@ const Index = () => {
           <Outlet />
         </div>
       </Content>
-      <Footer
-        style={{
-          textAlign: 'center',
-        }}
-      >
-        CalligraphyTools ©{new Date().getFullYear()} Created by Wichai_pan | Graduation Project
-      </Footer>
+      <MyFooter />
     </Layout>
   );
 };

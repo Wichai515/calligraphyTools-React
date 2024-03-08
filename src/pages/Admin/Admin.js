@@ -8,6 +8,9 @@ import {
   UploadOutlined,
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Outlet } from 'react-router-dom';
+import MyFooter from '../components/MyFooter/MyFooter';
+
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -17,6 +20,7 @@ function getItem(label, key, icon, children) {
     label,
   };
 }
+
 const items = [
   getItem('Option 1', '1', <PieChartOutlined />),
   getItem('Option 2', '2', <DesktopOutlined />),
@@ -29,6 +33,7 @@ const items = [
   getItem('Files', '9', <FileOutlined />),
   getItem('上传碑帖', '10', <UploadOutlined />),
 ];
+
 const Admin = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
@@ -56,14 +61,7 @@ const Admin = () => {
             margin: '0 16px',
           }}
         >
-          <Breadcrumb
-            style={{
-              margin: '16px 0',
-            }}
-          >
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
+
           <div
             style={{
               padding: 24,
@@ -73,17 +71,14 @@ const Admin = () => {
             }}
           >
             Bill is a cat.
+            <Outlet />
           </div>
         </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
+        <MyFooter />
       </Layout>
     </Layout>
   );
 };
+
+
 export default Admin;

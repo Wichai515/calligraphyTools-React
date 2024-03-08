@@ -10,6 +10,7 @@ import Dictionary from '../pages/Dictionary/Dictionary'
 import Book from '../pages/Book/book'
 import Collect from '../pages/Collect/Collect'
 import Welcome from '../pages/Welcome/Welcome'
+import Uploadbooks from '../pages/Admin/Uploadbooks'
 
 
 
@@ -51,7 +52,13 @@ const router = createBrowserRouter([
     },
     {
         path: '/admin',
-        element: <Admin />
+        element: <Admin />,
+        children:[
+            {
+                path: '/admin/uploadbooks',
+                element: <Uploadbooks />
+            },
+        ]
     },
 
 ])
