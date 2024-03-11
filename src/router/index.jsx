@@ -1,4 +1,5 @@
 //react router
+//router/index.js
 import { createBrowserRouter } from 'react-router-dom'
 
 import Login from '../pages/Login/Login'
@@ -7,12 +8,13 @@ import Index from '../pages/Index/Index'
 import NotFound from '../pages/NotFound/NotFound'
 import Admin from '../pages/Admin/Admin'
 import Dictionary from '../pages/Dictionary/Dictionary'
-import Book from '../pages/Book/book'
+import Book from '../pages/Book/Book'
 import Collect from '../pages/Collect/Collect'
 import Welcome from '../pages/Welcome/Welcome'
 import Uploadnewbooks from '../pages/Admin/Uploadnewbooks'
 import Uploadexistingbooks from '../pages/Admin/Uploadexistingbooks'
 import Singlecut from '../pages/Admin/SingleCut'
+import BookDetail from '../pages/Book/BookDetail'
 
 
 
@@ -35,7 +37,18 @@ const router = createBrowserRouter([
             },
             {
                 path: '/book',
-                element: <Book />
+                element: <Book />,
+                // children:[
+                //     {
+                //         path: '/book/detail/:id',
+                //         element: <BookDetail />, 
+                //     }
+
+                // ]
+            },
+            {
+                path: '/book/detail/:id',
+                element: <BookDetail />, 
             },
             {
                 path: '/collect',
