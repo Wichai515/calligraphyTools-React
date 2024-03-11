@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
   UserOutlined,
   UploadOutlined,
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import MyFooter from '../components/MyFooter/MyFooter';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content,  Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
     key,
@@ -22,16 +18,16 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
-  getItem('Option 1', '1', <PieChartOutlined />),
-  getItem('Option 2', '2', <DesktopOutlined />),
   getItem('User', 'sub1', <UserOutlined />, [
     getItem('Tom', '3'),
     getItem('Bill', '4'),
     getItem('Alex', '5'),
   ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-  getItem('Files', '9', <FileOutlined />),
-  getItem('上传碑帖', '10', <UploadOutlined />),
+  getItem('上传', '10', <UploadOutlined />,[
+    getItem('上传新碑帖', '11',<Link to="/admin/uploadnewbooks" />),
+    getItem('上传已有碑帖', '12',<Link to="/admin/uploadexisitngbooks" />),
+  ]),
+  getItem('单字裁切上传','13',<Link to="/admin/Singlecut" />)
 ];
 
 const Admin = () => {
@@ -65,12 +61,12 @@ const Admin = () => {
           <div
             style={{
               padding: 24,
-              minHeight: 360,
+              minHeight: 600,
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
             }}
           >
-            Bill is a cat.
+            
             <Outlet />
           </div>
         </Content>

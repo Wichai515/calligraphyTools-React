@@ -10,8 +10,9 @@ import Dictionary from '../pages/Dictionary/Dictionary'
 import Book from '../pages/Book/book'
 import Collect from '../pages/Collect/Collect'
 import Welcome from '../pages/Welcome/Welcome'
-import Uploadbooks from '../pages/Admin/Uploadbooks'
-
+import Uploadnewbooks from '../pages/Admin/Uploadnewbooks'
+import Uploadexistingbooks from '../pages/Admin/Uploadexistingbooks'
+import Singlecut from '../pages/Admin/SingleCut'
 
 
 
@@ -55,8 +56,16 @@ const router = createBrowserRouter([
         element: <Admin />,
         children:[
             {
-                path: '/admin/uploadbooks',
-                element: <Uploadbooks />
+                path: '/admin/uploadnewbooks',
+                element: <Uploadnewbooks />
+            },
+            {
+                path: '/admin/uploadexisitngbooks',
+                element: <Uploadexistingbooks />
+            },
+            {
+                path: '/admin/singlecut',
+                element: <Singlecut />
             },
         ]
     },

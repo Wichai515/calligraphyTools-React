@@ -15,6 +15,7 @@ const Test = () => {
     <div>
       test
       <button onClick={() => navigate('/')}>jump</button>
+      
       <MyFooter />
     </div>
   );
