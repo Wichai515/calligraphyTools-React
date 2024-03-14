@@ -19,7 +19,7 @@ const mockCharacters = [
   {  
     id: 2,  
     character: '字测试',  
-    imageUrl: 'http://43.143.114.225:7791/i/2024/03/08/65ea98498cb2c.png',  
+    imageUrl: 'http://192.168.3.52:7791/i/2024/03/11/65ef15493c411.png',  
     author: '张三',  
     inscriptionName: '测试'  
   },  
