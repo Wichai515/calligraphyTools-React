@@ -1,15 +1,31 @@
 //BookVersionCard.js
-import { Card, Image } from 'antd';  
 import { Link } from 'react-router-dom';
+import { Card, Image } from 'antd';  
+import { useNavigate } from 'react-router-dom';
 
 const BookVersionCard = ({ version }) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        console.log('点击了碑帖版本:', version.name);
+        navigate(`/book/version/${version.id}`);
+    };
+
     return (
-        <Card title={version.name} hoverable>
-            <Image src={version.coverImageUrl} alt={version.name} width={200} />
-            <Link to={`/book/verion/${version.id}`}>查看详情</Link>
-            {/*这个地方要携带好几个数据，这个url怎么写比较好 */}
+        <Card
+            title={version.name}
+            style={{ textAlign: 'center', cursor: 'pointer' }}
+            onClick={handleClick}
+            hoverable
+        >
+            <Image 
+            src={version.coverImageUrl} 
+            alt={version.name} 
+            width={200}
+            preview={false} // 禁用图片预览效果
+             />
         </Card>
     );
-}
+};
 
-export default BookVersionCard 
+export default BookVersionCard;

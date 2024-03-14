@@ -13,12 +13,19 @@ const BookCard = ({ book }) => {
   return (  
     <Card  
       title={book.name}  
-      cover={<Image src={book.coverImageUrl} alt={book.name} width={200} />} // 使用cover属性添加封面图  
+      style={{ textAlign: 'center', cursor: 'pointer' }} // 使用style属性设置居中显示和光标样式
+      // cover={<Image src={book.coverImageUrl} alt={book.name} width={200} />} // 使用cover属性添加封面图  
       onClick={handleClick}  
     >  
+      <Image 
+        src={book.coverImageUrl} 
+        alt={book.name} 
+        width={200} 
+        preview={false} // 禁用图片预览效果
+      />
       <p>{book.description}</p>  
     </Card>  
   );  
 };  
   
-export default BookCard; // 使用withRouter包装组件以注入路由功能
+export default BookCard; 

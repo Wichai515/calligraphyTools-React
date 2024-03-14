@@ -5,7 +5,7 @@ import { PlusOutlined } from '@ant-design/icons';
 const { Option } = Select;
 const { TextArea } = Input;
 const apiUrl = 'http://nas.wichaipan.cn';
-// 100.115.73.6 43.143.114.225:7791
+// 100.115.73.6   43.143.114.225:7791  nas.wichaipan.cn
 
 const dynasties = [
     '先秦',
@@ -55,7 +55,7 @@ const UploadnewbooksForm = () => {
                 console.error('Error fetching authors:', error);
             }
         };
-        
+
         const fetchToken = async () => {
             try {
                 const token = await getToken(apiUrl, 'wichai_pan@outlook.com', 'wichai0515');
@@ -76,7 +76,7 @@ const UploadnewbooksForm = () => {
             email: email,
             password: password
         };
-    
+
         try {
             const response = await fetch(url, {
                 method: 'POST',
@@ -95,23 +95,34 @@ const UploadnewbooksForm = () => {
             throw new Error('Failed to get token: ' + error.message);
         }
     }
-
+    const props = {
+        action: `${apiUrl}/api/v1/upload`,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json',
+            'Content-Type': 'multipart/form-data',
+            'Access-Control-Allow-Origin': '*',
+            'X-Requested-Width': null
+        },
+    }
     const uploadImageToImageHost = async (file) => {
         // 在这里实现图片上传兰空图床逻辑
         try {
-            
-            const url = `${apiUrl}/upload`;
+            const url = `${apiUrl}/api/v1/upload`;
             const formData = new FormData();
             formData.append('file', file);
-    
+
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/json',
+                    'Content-Type': 'multipart/form-data',
+                    'Access-Control-Allow-Origin': '*'
                 },
                 body: formData
             });
-    
+
             const data = await response.json();
             if (data.status) {
                 return data.links.url;
@@ -126,6 +137,7 @@ const UploadnewbooksForm = () => {
     };
 
     const handleImageUpload = async (file) => {
+        console.log(file)
         const imageUrl = await uploadImageToImageHost(file);
         setImages(prevImages => [...prevImages, { url: imageUrl, page: 1 }]);
     };
@@ -145,9 +157,9 @@ const UploadnewbooksForm = () => {
         // 在这里处理表单提交逻辑，比如发送到服务器  
     };
 
-    const beforeUpload = (file) => {
-        // 在这里添加文件上传前的验证逻辑
-    };
+    // const beforeUpload = (file) => {
+    //     // 在这里添加文件上传前的验证逻辑
+    // };
 
     return (
         <div>
@@ -226,8 +238,8 @@ const UploadnewbooksForm = () => {
                     extra="支持上传多张图片"
                 >
                     <Upload
+                        {...props}
                         listType="picture-card"
-                        customRequest={handleImageUpload}
                     >
                         <PlusOutlined />
                     </Upload>

@@ -1,19 +1,44 @@
+//Book.js
 import React from 'react';  
 import { Input, Row, Col, Card, Space } from 'antd';  
 import SearchInput from './components/SearchInput';  
 import BookCard from './components/BookCard';  
+import { useState, useEffect } from 'react'; 
   
 // 假设的碑帖数据  
-const books = [  
-  { id: 1, name: '碑帖A', description: '这是碑帖A的描述' , coverImageUrl: 'http://43.143.114.225:7791/i/2024/03/08/65ea98498cb2c.png'},  
-  { id: 2, name: '碑帖B', description: '这是碑帖B的描述' , coverImageUrl: 'http://43.143.114.225:7791/i/2024/03/08/65ea98498cb2c.png'},
-  { id: 2, name: '碑帖B', description: '这是碑帖B的描述' , coverImageUrl: 'http://43.143.114.225:7791/i/2024/03/08/65ea98498cb2c.png'},  
-  { id: 2, name: '碑帖B', description: '这是碑帖B的描述' , coverImageUrl: 'http://43.143.114.225:7791/i/2024/03/08/65ea98498cb2c.png'},
-  { id: 2, name: '碑帖B', description: '这是碑帖B的描述' , coverImageUrl: 'http://43.143.114.225:7791/i/2024/03/08/65ea98498cb2c.png'},
-  // ...更多碑帖数据  
-];  
+// const books = [  
+//   { id: 1, name: '碑帖A', description: '这是碑帖A的描述' , coverImageUrl: 'http://nas.wichaipan.cn/i/2024/03/14/65f2fdef0e0c5.png'},  
+//   // ...更多碑帖数据  
+// ];  
+
+function replaceLocalhost(url) {
+  return url.replace('192.168.3.52:7791', 'nas.wichaipan.cn');
+}
+
   
 const Book = () => {  
+
+  const [books, setBooks] = useState([]); // 用于存储书籍数据的状态
+
+  useEffect(() => {
+    // 在组件加载时获取书籍数据
+    fetch('http://43.143.114.225:8000/api/get-books')
+      .then(response => response.json())
+      .then(data => {
+        // 将获取的书籍数据设置为组件的状态
+        const updatedBooks = data.data.map(book => ({
+          id: book.bo_id,
+          name: book.bo_name,
+          description: book.bo_introduce,
+          coverImageUrl: replaceLocalhost(book.bo_cover_url)
+        }));
+        setBooks(updatedBooks);
+      })
+      .catch(error => {
+        console.error('Error fetching books:', error);
+      });
+  }, []); // 空数组作为依赖，确保只在组件加载时获取一次数据
+
   const handleSearch = (value) => {  
     // 在这里实现搜索逻辑，例如过滤books数组  
     console.log('搜索:', value);  
@@ -28,7 +53,7 @@ const Book = () => {
       {/* 栅格和卡片 */}  
       <Row gutter={[16, 16]}>  
         {books.map((book) => (  
-          <Col key={book.id} span={8}>  
+          <Col key={book.id} span={6}>  
             <BookCard book={book} />  
           </Col>  
         ))}  
