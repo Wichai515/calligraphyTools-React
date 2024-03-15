@@ -26,35 +26,35 @@ const images = [
   },
 ];
 
-const CustomImageComponent = ({ src }) => (
-  <TransformWrapper>
-    <TransformComponent>
-      <img src={src} alt="test" />
-    </TransformComponent>
-  </TransformWrapper>
-);
+// const CustomImageComponent = ({ src }) => (
+//   <TransformWrapper>
+//     <TransformComponent>
+//       <img src={src} alt="test" />
+//     </TransformComponent>
+//   </TransformWrapper>
+// );
 
-const CustomImageGallery = ({ items }) => {
-  return (
-    <ImageGallery
-      items={items}
-      renderItem={(item) => (
-        <div className="image-gallery-image">
-          <CustomImageComponent src={item.original} />
-          <div className="image-gallery-description">{item.description}</div>
-        </div>
-      )}
-    />
-  );
-}
+// const CustomImageGallery = ({ items }) => {
+//   return (
+//     <ImageGallery
+//       items={items}
+//       renderItem={(item) => (
+//         <div className="image-gallery-image">
+//           <CustomImageComponent src={item.original} />
+//           <div className="image-gallery-description">{item.description}</div>
+//         </div>
+//       )}
+//     />
+//   );
+// }
 
-const Test = () => {
-  return (
-    <CustomImageGallery items={images} />
-  );
-}
+// const Test = () => {
+//   return (
+//     <CustomImageGallery items={images} />
+//   );
+// }
 
-export default Test;
+// export default Test;
 
 
 
@@ -86,14 +86,14 @@ export default Test;
 
 
 
-// const Test  = () => {
+const Test  = () => {
   
-//   return (
-//   <ImageGallery items={images} />
-//   );
-// }
+  return (
+  <ImageGallery items={images} />
+  );
+}
 
-// export default Test;
+export default Test;
 
 
 // import React, { useState } from 'react';

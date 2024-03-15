@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { Card, Image } from 'antd';  
 import { useNavigate } from 'react-router-dom';
 
-const BookVersionCard = ({ version }) => {
+const BookVersionCard = ({ version, boid }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
         console.log('点击了碑帖版本:', version.name);
-        navigate(`/book/version/${version.id}`);
+        console.log('boid:', boid);
+        navigate(`/book/detail/${boid}/${version.name}`);
     };
 
     return (
