@@ -15,6 +15,7 @@ import Uploadnewbooks from '../pages/Admin/Uploadnewbooks'
 import Uploadexistingbooks from '../pages/Admin/Uploadexistingbooks'
 import Singlecut from '../pages/Admin/SingleCut'
 import BookDetail from '../pages/Book/BookDetail'
+import BookVersionDetail from '../pages/Book/BookVersionDetail'
 
 
 
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
     {
         path: '*',
         element: <NotFound />
+    },
+    {
+        path:'/book/detail/:boid/:verid',
+        element: <BookVersionDetail />
     },
     {
         path: '/admin',
