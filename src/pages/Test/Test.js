@@ -6,7 +6,6 @@ import React, { useState ,Component ,} from 'react';
 import {
   TransformWrapper,
   TransformComponent,
-  ReactZoomPanPinchRef,
 } from "react-zoom-pan-pinch";
 
  
@@ -26,37 +25,44 @@ const images = [
   },
 ];
 
-// const CustomImageComponent = ({ src }) => (
-//   <TransformWrapper>
-//     <TransformComponent>
-//       <img src={src} alt="test" />
-//     </TransformComponent>
-//   </TransformWrapper>
-// );
+const CustomImageComponent = ({ src }) => (
+  <TransformWrapper>
+    <TransformComponent>
+      <img src={src} alt="test" />
+    </TransformComponent>
+  </TransformWrapper>
+);
 
-// const CustomImageGallery = ({ items }) => {
-//   return (
-//     <ImageGallery
-//       items={items}
-//       renderItem={(item) => (
-//         <div className="image-gallery-image">
-//           <CustomImageComponent src={item.original} />
-//           <div className="image-gallery-description">{item.description}</div>
-//         </div>
-//       )}
-//     />
-//   );
-// }
+const CustomImageGallery = ({ items }) => {
+  return (
+    <ImageGallery
+      items={items}
+      renderItem={(item) => (
+        <div className="image-gallery-image" style={{display:"flex",justifyContent:'center'}}>
+          <CustomImageComponent src={item.original} />
+          <div className="image-gallery-description">{item.description}</div>
+        </div>
+      )}
+    />
+  );
+}
 
-// const Test = () => {
+const Test = () => {
+  return (
+    <CustomImageGallery items={images} />
+  );
+}
+
+export default Test;
+
+// const Test  = () => {
+  
 //   return (
-//     <CustomImageGallery items={images} />
+//   <ImageGallery items={images} />// 这个里面嵌套了一个就这样了 这个不能放大 我加了一个能放大的插件
 //   );
 // }
 
 // export default Test;
-
-
 
 
 
@@ -86,14 +92,7 @@ const images = [
 
 
 
-const Test  = () => {
-  
-  return (
-  <ImageGallery items={images} />
-  );
-}
 
-export default Test;
 
 
 // import React, { useState } from 'react';

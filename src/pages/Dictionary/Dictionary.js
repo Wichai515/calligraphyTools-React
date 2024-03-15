@@ -1,73 +1,68 @@
 //Dictionary.js
 
-import React, { useState, useEffect } from 'react';  
-import { Row, Col } from 'antd';  
+import React, { useState, useEffect } from 'react';
 import BookStylesTabs from "./components/BookStylesTabs";
-import CharacterCard from "./components/CharacterCard";
 import SearchInput from "./components/SearchInput";
+import axios from 'axios'; // 导入 Axios
 
-
-// 模拟的字符数据  
-const mockCharacters = [  
-  {  
-    id: 1,  
-    character: '字测试',  
-    imageUrl: 'http://43.143.114.225:7791/i/2024/03/08/65ea98498cb2c.png',  
-    author: '张三',  
-    inscriptionName: '测试'  
-  }, 
-  {  
-    id: 2,  
-    character: '字测试',  
-    imageUrl: 'http://192.168.3.52:7791/i/2024/03/11/65ef15493c411.png',  
-    author: '张三',  
-    inscriptionName: '测试'  
-  },  
-  // 添加更多模拟数据...  
-]; 
-
-const Dictionary = () =>{
-
-  const [searchQuery, setSearchQuery] = useState('');  
-  const [characters, setCharacters] = useState([]);  
-
-  const handleSearch = (query) => {  
-    setSearchQuery(query);  
-    // 使用模拟数据  
-    setCharacters(mockCharacters.filter(char => char.character.includes(query)));  
-  };  
-  
-  // const handleSearch = async (query) => {  
-  //   setSearchQuery(query);  
-  //   // 假设你有一个API可以获取字符数据，这里用fetch代替  
-  //   const response = await fetch(`/api/characters?query=${query}`);  
-  //   const data = await response.json();  
-  //   setCharacters(data);  
-  // };  
-
-    return (
-        <div>
-          <SearchInput onSearch={handleSearch}/>
-          <BookStylesTabs />
-
-          <div style={{ marginTop: '20px' }}>  
-            <Row gutter={16}> {/* 设置栅格间距 */}  
-              {characters.map((character, index) => (  
-                <Col span={4} key={index}> {/* 每个栅格占据8个单位，共24个单位一行 */}  
-                  <CharacterCard  
-                    key={character.id}  
-                    imageUrl={character.imageUrl}  
-                    character={character.character}  
-                    author={character.author}  
-                    inscriptionName={character.inscriptionName}  
-                  />  
-                </Col>  
-              ))}  
-            </Row>  
-          </div> 
-
-        </div>
-    );
+function replaceLocalhost(url) {
+  return url.replace('192.168.3.52:7791', 'nas.wichaipan.cn');
 }
 
-export default Dictionary
+const Dictionary = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [fontType, setFontType] = useState('');
+  const [characters, setCharacters] = useState([]);
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    // 发起后端请求
+    console.log(query)
+    console.log(fontType)
+    axios.get(`http://43.143.114.225:8000/api/get-search-dictionary/${query}/${fontType}`)
+      .then(response => {
+        // 处理获取到的数据
+        console.log(response.data); // 可以在控制台查看后端返回的数据
+        // 更新前端状态
+        const updatecharacters = response.data.data.map(character => ({
+          id: character.di_id,
+          ch_sim: character.di_character_sim,
+          ch_com: character.di_character_com,
+          author: character.au,
+          bookName: character.bo,
+          dynasty: character.di_dynasty,
+          imageurl: replaceLocalhost(character.di_photo_url),
+        }))//添加字段
+        setCharacters(updatecharacters);
+        
+
+        console.log('=====================');
+        console.log(characters);
+      })
+      .catch(error => {
+        console.error('Error fetching search results:', error);
+        // 处理错误情况
+      });
+  };
+
+  useEffect(() => {
+    // 监听字体类型和搜索词变化，并在变化时发起搜索请求  ----->解决异步问题
+    if (searchQuery && fontType) {
+      handleSearch(searchQuery);
+    }
+  }, [searchQuery, fontType]);
+
+  return (
+    <div>
+      <SearchInput onSearch={handleSearch} />
+      <BookStylesTabs 
+      setFontType={setFontType} 
+      onClick={handleSearch} 
+      characters={characters} 
+      searchQuery={searchQuery}
+      />
+    </div>
+  );
+}
+
+export default Dictionary;

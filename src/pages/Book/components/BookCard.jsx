@@ -20,7 +20,8 @@ const BookCard = ({ book }) => {
       <Image 
         src={book.coverImageUrl} 
         alt={book.name} 
-        width={200} 
+        style={{ width: '100%', height: 'auto' }}
+        // width={200} 
         preview={false} // 禁用图片预览效果
       />
       <p>{book.description}</p>  
