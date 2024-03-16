@@ -5,6 +5,7 @@ import { PlusOutlined } from '@ant-design/icons';
 const { Option } = Select;
 const { TextArea } = Input;
 const apiUrl = 'http://nas.wichaipan.cn';
+// const apiUrl = 'http://nas.web.xmchuangyi.com';
 // 100.115.73.6   43.143.114.225:7791  nas.wichaipan.cn
 
 const dynasties = [
@@ -98,10 +99,10 @@ const UploadnewbooksForm = () => {
     const props = {
         action: `${apiUrl}/api/v1/upload`,
         headers: {
-            'Authorization': `Bearer ${token}`,
+            // 'Authorization': `Bearer ${token}`,
             'Accept': 'application/json',
             'Content-Type': 'multipart/form-data',
-            'Access-Control-Allow-Origin': '*',
+            // 'Access-Control-Allow-Origin': '*',
             'X-Requested-Width': null
         },
     }
@@ -115,10 +116,10 @@ const UploadnewbooksForm = () => {
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${token}`,
+                    // 'Authorization': `Bearer ${token}`,
                     'Accept': 'application/json',
                     'Content-Type': 'multipart/form-data',
-                    'Access-Control-Allow-Origin': '*'
+                    // 'Access-Control-Allow-Origin': '*'
                 },
                 body: formData
             });

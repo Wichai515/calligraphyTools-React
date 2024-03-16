@@ -35,6 +35,7 @@ const Login = () => {
             message: '注册成功',
             description: '欢迎使用CTools！',
           });
+          
         } else {
           const data = await response.json();
           console.error('注册失败:', data);
@@ -66,13 +67,22 @@ const Login = () => {
     
         if (response.ok) {
           const data = await response.json();
-          console.log('登录成功:', data);
+          // console.log('登录成功:', data);
           notification.success({
             message: '登录成功',
             description: '欢迎使用CTools！',
           });
+          //存储token
+          localStorage.setItem('token', data.token);
+          // console.log('token:', data.token);
+          // 读取本地存储中的 selectedMenuItem 值
+          const selectedMenuItem = localStorage.getItem('selectedMenuItem');
           // 跳转
-          navigate('/');
+          if (selectedMenuItem === '4') {
+            navigate('/collect');
+        } else {
+            navigate('/');
+        }
         } else {
           const data = await response.json();
           console.error('登录失败:', data);

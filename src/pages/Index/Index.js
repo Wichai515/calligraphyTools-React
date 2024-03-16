@@ -1,8 +1,8 @@
 //index.js
 
-import React from 'react';
+import React , { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, Layout, Menu, Button, theme } from 'antd';
 import MyFooter from '../components/MyFooter/MyFooter';
 
 const { Header, Content, Footer } = Layout;
@@ -18,9 +18,30 @@ const items = [
 ];
 
 const Index = () => {
+  const token = localStorage.getItem('token'); // 获取 token
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // 移除 token
+    // 执行其他注销操作，刷新
+    window.location.reload(); // 刷新页面
+  };
+
+  // 在组件加载时检查本地存储中是否有已选择的菜单项键
+  const [selectedMenuItem, setSelectedMenuItem] = useState(() => {
+    const storedKey = localStorage.getItem('selectedMenuItem');
+    return storedKey ? [storedKey] : ['1']; // 设置默认选中项为首页
+  });
+
+  // 当菜单项被点击时更新本地存储的值
+  const handleMenuItemClick = item => {
+    setSelectedMenuItem([item.key]);
+    localStorage.setItem('selectedMenuItem', item.key);
+  };
+
   return (
     <Layout>
       <Header
@@ -33,7 +54,9 @@ const Index = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['1']}
+          selectedKeys={selectedMenuItem}
+          onSelect={handleMenuItemClick}
+          // defaultSelectedKeys={['1']}
           style={{
             flex: 1,
             minWidth: 0,
@@ -45,13 +68,19 @@ const Index = () => {
             </Menu.Item>
           ))}
         </Menu>
+        {token ? (
+          <Button type="primary" onClick={handleLogout}>登出</Button>
+        ) : (
+          <Link to="/login"><Button type="primary">登录/注册</Button></Link>
+        )}
+
       </Header>
       <Content
         style={{
           padding: '32px 32px',
         }}
       >
-        
+
         <div
           style={{
             background: colorBgContainer,
