@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Modal } from 'antd';
+import AddNewCollect from './components/AddNewCollect';
 
 const Collect = () => {
     const navigate = useNavigate();
@@ -34,7 +35,8 @@ const Collect = () => {
 
     return (
         <div>
-            Collect
+            {/* Collect */}
+            <AddNewCollect />
         </div>
     );
 }

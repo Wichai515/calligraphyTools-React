@@ -16,6 +16,7 @@ import Uploadexistingbooks from '../pages/Admin/Uploadexistingbooks'
 import Singlecut from '../pages/Admin/SingleCut'
 import BookDetail from '../pages/Book/BookDetail'
 import BookVersionDetail from '../pages/Book/BookVersionDetail'
+import CollectDisplay from '../pages/Collect/CollectDisplay'
 
 
 
@@ -39,13 +40,6 @@ const router = createBrowserRouter([
             {
                 path: '/book',
                 element: <Book />,
-                // children:[
-                //     {
-                //         path: '/book/detail/:id',
-                //         element: <BookDetail />, 
-                //     }
-
-                // ]
             },
             {
                 path: '/book/detail/:boid',
@@ -54,6 +48,10 @@ const router = createBrowserRouter([
             {
                 path: '/collect',
                 element: <Collect />
+            },
+            {
+                path:'/collectdisplay',
+                element: <CollectDisplay />
             },
         ]
     },

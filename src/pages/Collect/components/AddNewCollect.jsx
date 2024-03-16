@@ -1,6 +1,5 @@
-//AddNewCollect.jsx
 import React, { useState } from 'react';
-import { Modal, Form, Input, Button } from 'antd';
+import { Button, Modal, Form, Input } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
 const AddNewCollect = () => {
@@ -26,11 +25,26 @@ const AddNewCollect = () => {
 
     return (
         <>
-            <Button icon={<PlusOutlined />} size="large" onClick={showModal}>
-                添加新卡片
-            </Button>
+            <div
+                style={{
+                    width: '96px',
+                    height: '96px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    border: '1px dashed #d9d9d9',
+                    borderRadius: '2px',
+                    cursor: 'pointer',
+                    marginBottom: '16px', // 调整按钮与其他元素的间距
+                }}
+                onClick={showModal} // 点击按钮显示对话框
+            >
+                <PlusOutlined style={{ fontSize: '32px', marginBottom: '8px' }} />
+                <div>创建新集字</div>
+            </div>
             <Modal
-                title="添加新卡片"
+                title="创建新集字"
                 visible={visible}
                 onOk={handleOk}
                 onCancel={handleCancel}
@@ -62,5 +76,3 @@ const AddNewCollect = () => {
 }
 
 export default AddNewCollect;
-
-
