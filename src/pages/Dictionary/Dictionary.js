@@ -28,8 +28,8 @@ const Dictionary = () => {
           id: character.di_id,
           ch_sim: character.di_character_sim,
           ch_com: character.di_character_com,
-          author: character.au,
-          bookName: character.bo,
+          author: character.au_name,
+          bookName: character.bo_name,
           dynasty: character.di_dynasty,
           imageurl: replaceLocalhost(character.di_photo_url),
         }))//添加字段

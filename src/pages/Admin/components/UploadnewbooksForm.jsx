@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Select, Button, Upload, Row, Col } from 'antd';
+import { Form, Input, Select, Button, Upload, Row, Col, notification } from 'antd';
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 import axios from 'axios';
 
@@ -173,13 +173,23 @@ const UploadnewbooksForm = () => {
 
             const response = await axios.post('http://43.143.114.225:8000/api/post-books/', requestBody);
             console.log(response.data); // 处理返回数据
-
+            notification.success({
+                message: '上传成功',
+                description: '您的单字已成功上传！',
+            });
+            
+            // 清空图片状态
+            setImages([]);
             // 清空表单和图片数据
             form.resetFields();
             setImages([]);
         } catch (error) {
             console.error('Error submitting form:', error);
             // 处理错误情况
+            notification.error({
+                message: '上传失败',
+                description: '上传失败，请稍后重试！',
+            });
         }
     };
 

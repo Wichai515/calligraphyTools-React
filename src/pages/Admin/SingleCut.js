@@ -1,8 +1,10 @@
 //Singlecut.js
+import AddNewCharactersform from './components/AddNewCharactersform'; 
 
 const Singlecut = () =>{
     return (
-        <div></div>
+        // <div></div>
+        <AddNewCharactersform />
     );
 }
 
