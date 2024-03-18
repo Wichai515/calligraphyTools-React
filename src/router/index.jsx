@@ -17,6 +17,7 @@ import Singlecut from '../pages/Admin/SingleCut'
 import BookDetail from '../pages/Book/BookDetail'
 import BookVersionDetail from '../pages/Book/BookVersionDetail'
 import CollectDisplay from '../pages/Collect/CollectDisplay'
+import CollectionDisplay from '../pages/Collect/CollectionDisplay'
 
 
 
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
             {
                 path:'/collectdisplay',
                 element: <CollectDisplay />
+            },
+            {
+                path:'/collectiondisplay/:coid',
+                element: <CollectionDisplay />
             },
         ]
     },
