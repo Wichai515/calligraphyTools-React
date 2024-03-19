@@ -14,6 +14,7 @@ const BookCard = ({ book }) => {
     <Card  
       title={book.name}  
       style={{ textAlign: 'center', cursor: 'pointer' }} // 使用style属性设置居中显示和光标样式
+      hoverable
       // cover={<Image src={book.coverImageUrl} alt={book.name} width={200} />} // 使用cover属性添加封面图  
       onClick={handleClick}  
     >  
