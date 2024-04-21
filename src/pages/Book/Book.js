@@ -22,7 +22,7 @@ const Book = () => {
 
   useEffect(() => {
     // 在组件加载时获取书籍数据
-    fetch('http://43.143.114.225:8000/api/get-books')
+    fetch('http://43.143.114.225:8000/api/get-books/')
       .then(response => response.json())
       .then(data => {
         // 将获取的书籍数据设置为组件的状态

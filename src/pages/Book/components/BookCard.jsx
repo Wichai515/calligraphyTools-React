@@ -7,7 +7,7 @@ const BookCard = ({ book }) => {
 
     const handleClick = () => {  
         console.log('点击了碑帖:', book.name)
-        navigate(`/book/detail/${book.id}`); // 导航到详情页，并传递碑帖ID作为参数  
+        navigate(`/book/detail/${book.id}`);     // 导航到版本页，并传递碑帖ID作为参数  
     };  
 
   return (  

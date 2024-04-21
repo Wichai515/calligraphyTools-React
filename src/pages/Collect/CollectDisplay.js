@@ -57,7 +57,7 @@ const CollectDisplay = () => {
                 {rearrangedCardData.map((row, rowIndex) => (
                     <React.Fragment key={rowIndex}>
                         {row.map((card, colIndex) => (
-                            <Card key={colIndex} style={{ width: 200, height: 200, margin: 8 }}>
+                            <Card key={colIndex}  style={{ width: 200, height: 200, margin: 8 }}>
                                 {card && (
                                     <>
                                         <div style={{ textAlign: 'center' }}>{card.id}</div>

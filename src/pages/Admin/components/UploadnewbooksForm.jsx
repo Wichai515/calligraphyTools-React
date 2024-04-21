@@ -97,7 +97,7 @@ const UploadnewbooksForm = () => {
         }
     }
     const props = {
-        action: `${apiUrl}/api/v1/upload`,
+        action: `${apiUrl}/api/v1/upload/`,
         headers: {
             // 'Authorization': `Bearer ${token}`,
             'Accept': 'application/json',
@@ -109,7 +109,8 @@ const UploadnewbooksForm = () => {
     const uploadImageToImageHost = async (file) => {
         // 在这里实现图片上传兰空图床逻辑
         try {
-            const url = `${apiUrl}/api/v1/upload`;
+                    //  ？？、 /
+            const url = `${apiUrl}/api/v1/upload/`;
             const formData = new FormData();
             formData.append('file', file);
 

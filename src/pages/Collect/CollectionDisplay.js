@@ -28,13 +28,13 @@ const CollectionDisplay = () => {
                             co_setting.choose_di.map(async ({ dictionary_id }) => {
                                 const response = await axios.get(`http://43.143.114.225:8000/api/get-DicCharacter/${dictionary_id}/`);
                                 // console.log('response data', response.data);
-                                console.log('=====================================');
-                                console.log('au_name', response.data.au.au_name);
-                                console.log('bo_name', response.data.bo.bo_name);
-                                console.log('di_id', response.data.di_id);
-                                console.log('di_dynasty', response.data.di_dynasty);
-                                console.log('di_character_sim', response.data.di_character_sim);
-                                console.log('di_character_com', response.data.di_character_com);
+                                // console.log('=====================================');
+                                // console.log('au_name', response.data.au.au_name);
+                                // console.log('bo_name', response.data.bo.bo_name);
+                                // console.log('di_id', response.data.di_id);
+                                // console.log('di_dynasty', response.data.di_dynasty);
+                                // console.log('di_character_sim', response.data.di_character_sim);
+                                // console.log('di_character_com', response.data.di_character_com);
                                 
                                 return {
                                     id: dictionary_id,
@@ -97,7 +97,8 @@ const CollectionDisplay = () => {
                     <React.Fragment key={rowIndex}>
                         {row.map((card, colIndex) => (
                             <Card 
-                                key={colIndex} s
+                                key={colIndex}
+                                bordered={false}
                                 style={{ 
                                     margin: 1, 
                                     textAlign: 'center', 

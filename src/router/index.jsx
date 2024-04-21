@@ -18,6 +18,7 @@ import BookDetail from '../pages/Book/BookDetail'
 import BookVersionDetail from '../pages/Book/BookVersionDetail'
 import CollectDisplay from '../pages/Collect/CollectDisplay'
 import CollectionDisplay from '../pages/Collect/CollectionDisplay'
+import Reconition from '../pages/Regonition/Regonition'
 
 
 
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
             {
                 path:'/collectiondisplay/:coid',
                 element: <CollectionDisplay />
+            },
+            {
+                path:'/regonition',
+                element: <Reconition />
             },
         ]
     },

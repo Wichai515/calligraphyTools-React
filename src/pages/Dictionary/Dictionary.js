@@ -19,7 +19,7 @@ const Dictionary = () => {
     // 发起后端请求
     console.log(query)
     console.log(fontType)
-    axios.get(`http://43.143.114.225:8000/api/get-search-dictionary/${query}/${fontType}`)
+    axios.get(`http://43.143.114.225:8000/api/get-search-dictionary/${query}/${fontType}/`)
       .then(response => {
         // 处理获取到的数据
         console.log(response.data); // 可以在控制台查看后端返回的数据
@@ -46,7 +46,7 @@ const Dictionary = () => {
   };
 
   useEffect(() => {
-    // 监听字体类型和搜索词变化，并在变化时发起搜索请求  ----->解决异步问题
+    // 监听书体类型和搜索词变化，并在变化时发起搜索请求  ----->解决异步问题
     if (searchQuery && fontType) {
       handleSearch(searchQuery);
     }

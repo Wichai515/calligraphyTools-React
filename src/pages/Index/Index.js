@@ -12,7 +12,7 @@ const items = [
   { key: '2', label: '字典', path: '/dictionary' },
   { key: '3', label: '碑帖', path: '/book' },
   { key: '4', label: '集字', path: '/collect' },
-  { key: '5', label: '识字' },
+  { key: '5', label: '识字', path: '/regonition'},
   { key: '6', label: '我的' },
   { key: '7', label: '管理员', path: '/admin' },
 ];

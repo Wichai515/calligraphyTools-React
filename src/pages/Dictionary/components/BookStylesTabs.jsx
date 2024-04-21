@@ -25,7 +25,7 @@ const BookStylesTabs = ({ setFontType, characters, onClick, searchQuery }) => {
   
 
   return (
-    <Tabs defaultActiveKey="1" onChange={handleTabChange}>
+    <Tabs defaultActiveKey="1" centered onChange={handleTabChange}>
       {chtype.map((type) => (
         <TabPane tab={type} key={type}>
           {/* {type} */}

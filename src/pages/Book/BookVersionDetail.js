@@ -42,12 +42,12 @@ const CustomImageGallery = ({ items, initialPositionX }) => {
 
 
 const BookVersionDetail = () => {
-  const { boid, verid } = useParams();
+  const { boid, vername } = useParams();
   const [images, setImages] = useState([]);
   const [initialPositionX, setInitialPositionX] = useState(0);
 
   useEffect(() => {
-    axios.get(`http://43.143.114.225:8000/api/get-book-photos/${boid}/${verid}`)
+    axios.get(`http://43.143.114.225:8000/api/get-book-photos/${boid}/${vername}`)
       .then(response => {
         console.log('=====')
         console.log(response.data)
@@ -69,7 +69,7 @@ const BookVersionDetail = () => {
       .catch(error => {
         console.error('Error fetching book photos:', error);
       });
-  }, [boid, verid]);
+  }, [boid, vername]);
 
   return (
     <div style={{

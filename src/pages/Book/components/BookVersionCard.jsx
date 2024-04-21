@@ -7,8 +7,8 @@ const BookVersionCard = ({ version, boid }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        console.log('点击了碑帖版本:', version.name);
-        console.log('boid:', boid);
+        // console.log('点击了碑帖版本:', version.name);
+        // console.log('boid:', boid);
         navigate(`/book/detail/${boid}/${version.name}`);
     };
 
