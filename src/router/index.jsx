@@ -74,7 +74,7 @@ const router = createBrowserRouter([
         element: <NotFound />
     },
     {
-        path:'/book/detail/:boid/:verid',
+        path:'/book/detail/:boid/:vername',
         element: <BookVersionDetail />
     },
     {

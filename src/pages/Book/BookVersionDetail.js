@@ -56,7 +56,8 @@ const BookVersionDetail = () => {
           thumbnail: replaceLocalhost(photo.bo_ph_url),
         })).reverse();// 反转数组顺序
         setImages(updatedImages);
-
+        console.log(boid)
+        console.log(vername)
         // 获取图片宽度并设置initialPositionX
         const image = new Image();
         image.src = updatedImages[0].original; // 假设获取第一张图片的宽度
